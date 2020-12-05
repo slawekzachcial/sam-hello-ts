@@ -12,18 +12,22 @@
   },
   "scripts": {
     "test": "NODE_ENV=development npm run build && mocha -r ts-node/register src/hello-world/tests/**/*.ts",
-    "build": "webpack-cli",
+    "build": "npm run lint && webpack-cli",
     "clean": "rm -rf .aws-sam",
     "prebuild": "rm -rf .aws-sam",
     "prewatch": "rm -rf .aws-sam",
-    "watch": "webpack-cli -w"
+    "watch": "webpack-cli -w",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/mocha": "^8.0.4",
     "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
     "aws-sam-webpack-plugin": "^0.7.0",
     "chai": "^4.2.0",
+    "eslint": "^7.15.0",
     "mocha": "^6.1.4",
     "ts-loader": "^8.0.11",
     "ts-node": "^9.1.0",
